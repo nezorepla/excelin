@@ -111,5 +111,37 @@ namespace Excelin
 
             adapt(getExcelSheet);  
         }
+                private void button2_Click(object sender, EventArgs e)
+        {
+            string sqlConnectionString = @"Data Source=.;Initial Catalog=CCOps; uid=User; Password = 123456;Connection Timeout=120;Integrated Security=SSPI;";
+            // Create DbDataReader to Data Worksheet
+            using (DbDataReader dr = cmd.ExecuteReader())
+            {
+
+                // SQL Server Connection String
+
+                // Bulk Copy to SQL Server
+                using (SqlBulkCopy bulkCopy =
+                           new SqlBulkCopy(sqlConnectionString))
+                {
+                    bulkCopy.DestinationTableName = "PTS_T_Tmp_PREGRINE";
+                    bulkCopy.WriteToServer(dr);
+                    MessageBox.Show("The data has been exported succefuly from Excel to SQL");
+
+                }
+                ExecuteSQLStr("exec CCOPS.dbo.PTS_SP_PREGRINE_FILE_FIN", sqlConnectionString);
+            }
+        }
+        private static void ExecuteSQLStr(string queryString,
+    string connectionString)
+        {
+            using (SqlConnection connection = new SqlConnection(
+                       connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
