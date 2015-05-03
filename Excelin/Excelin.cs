@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.Data.Common;
 
 namespace Excelin
 {
@@ -111,7 +113,20 @@ namespace Excelin
 
             adapt(getExcelSheet);  
         }
-                private void button2_Click(object sender, EventArgs e)
+     
+        private static void ExecuteSQLStr(string queryString,
+    string connectionString)
+        {
+            using (SqlConnection connection = new SqlConnection(
+                       connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
             string sqlConnectionString = @"Data Source=.;Initial Catalog=CCOps; uid=User; Password = 123456;Connection Timeout=120;Integrated Security=SSPI;";
             // Create DbDataReader to Data Worksheet
@@ -132,16 +147,7 @@ namespace Excelin
                 ExecuteSQLStr("exec CCOPS.dbo.PTS_SP_PREGRINE_FILE_FIN", sqlConnectionString);
             }
         }
-        private static void ExecuteSQLStr(string queryString,
-    string connectionString)
-        {
-            using (SqlConnection connection = new SqlConnection(
-                       connectionString))
-            {
-                SqlCommand command = new SqlCommand(queryString, connection);
-                command.Connection.Open();
-                command.ExecuteNonQuery();
-            }
-        }
+
+    
     }
 }

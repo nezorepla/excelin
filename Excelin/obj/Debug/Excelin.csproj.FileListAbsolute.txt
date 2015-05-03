@@ -1,0 +1,8 @@
+C:\sources\Excelin\Excelin\obj\Debug\ResolveAssemblyReference.cache
+C:\sources\Excelin\Excelin\obj\Debug\Excelin.Properties.Resources.resources
+C:\sources\Excelin\Excelin\obj\Debug\Excelin.csproj.GenerateResource.Cache
+C:\sources\Excelin\Excelin\bin\Debug\Excelin.exe
+C:\sources\Excelin\Excelin\bin\Debug\Excelin.pdb
+C:\sources\Excelin\Excelin\obj\Debug\Excelin.exe
+C:\sources\Excelin\Excelin\obj\Debug\Excelin.pdb
+C:\sources\Excelin\Excelin\obj\Debug\Excelin.Excelin.resources
