@@ -117,8 +117,8 @@ namespace Excelin
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string sqlConnectionStringyeni = @"Data Source=KRDPRDGEN01yeni;Initial Catalog=CCOps; uid=CollUser; Password = Coll123456;Connection Timeout=120;";
-            string sqlConnectionString = @"Data Source=KRDPRDGEN01;Initial Catalog=CCOps; uid=CollUser; Password = Coll123456;Connection Timeout=120;";
+            string sqlConnectionStringyeni = @"Data Source=;Initial Catalog=; uid=; Password = ;Connection Timeout=120;";
+            string sqlConnectionString = @"Data Source=;Initial Catalog=; uid=; Password = ;Connection Timeout=120;";
             // Create DbDataReader to Data Worksheet
 
             try
